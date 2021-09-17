@@ -1,0 +1,13 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+kubeadmConfigPatches:
+- |
+  kind: ClusterConfiguration
+  metadata:
+    name: config
+  apiServer:
+    extraArgs:
+      oidc-issuer-url: https://vstoken.actions.githubusercontent.com
+      oidc-client-id: https://github.com/bgpat/gha-oidc-k8s-example
+      oidc-username-claim: repository
+      oidc-username-prefix: "github-actions:"
